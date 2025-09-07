@@ -1,4 +1,4 @@
-package org;
+package org.config;
 
 public interface Endpoints {
     String CREATE_USER = "/user";

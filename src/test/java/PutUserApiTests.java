@@ -8,8 +8,8 @@ import org.schemas.UserSchema;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import static org.Endpoints.CREATE_USER;
-import static org.Endpoints.userByUsername;
+import static org.config.Endpoints.CREATE_USER;
+import static org.config.Endpoints.userByUsername;
 import static org.builders.ApiErrorSchemaBuilder.updateBodyIsMissing;
 import static org.builders.ApiErrorSchemaBuilder.usernameDoesNotExist;
 import static org.testng.Assert.assertEquals;
@@ -35,7 +35,6 @@ public class PutUserApiTests extends BaseApiTest {
         assertEquals(userSchemaForPut.setId(userByGet.getId()), userByGet);
     }
 
-    // тест падает, потому что апи всегда возвращает одинаковый текст в ответе: "type=unknown, message=no data" без уточнения ошибок
     @Test(description = "Невозможно отредактировать пользователя с пустым телом запроса")
     void unableToUpdateUserWithEmptyBody() {
         // создание пользователя
@@ -59,7 +58,6 @@ public class PutUserApiTests extends BaseApiTest {
         softAssert.assertAll();
     }
 
-    // тест падает, потому что апи возвращает 200
     @Test(description = "Невозможно отредактировать пользователя по несуществующему username пользователя")
     void unableToUpdateUserByNonexistentUserId() {
         // генерация несуществующего имени пользователя

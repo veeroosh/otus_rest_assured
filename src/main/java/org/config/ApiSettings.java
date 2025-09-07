@@ -1,4 +1,4 @@
-package org;
+package org.config;
 
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.LogDetail;

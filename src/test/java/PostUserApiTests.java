@@ -8,8 +8,8 @@ import org.schemas.UserSchema;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
-import static org.Endpoints.CREATE_USER;
-import static org.Endpoints.userByUsername;
+import static org.config.Endpoints.CREATE_USER;
+import static org.config.Endpoints.userByUsername;
 import static org.builders.ApiErrorSchemaBuilder.createBodyIsMissing;
 import static org.builders.ApiErrorSchemaBuilder.duplicatUsername;
 import static org.testng.Assert.assertEquals;
@@ -30,7 +30,6 @@ public class PostUserApiTests extends BaseApiTest {
         assertEquals(userByGet, userSchema.setId(userByGet.getId()));
     }
 
-    // тест падает, потому что апи всегда возвращает одинаковый текст в ответе: "type=unknown, message=no data" без уточнения ошибок
     @Test(description = "Невозможно создать пользователя с пустым телом запроса")
     void unableToCreateUserWithEmptyBody() {
         SoftAssert softAssert = new SoftAssert();
@@ -46,7 +45,6 @@ public class PostUserApiTests extends BaseApiTest {
         softAssert.assertAll();
     }
 
-    // тест падает, потому что апи возвращает 200 и создает пользователя
     @Test(description = "Невозможно создать пользователя с дубликатом username")
     void unableToCreateUserWithDuplicateUsername() {
         // создание пользователя

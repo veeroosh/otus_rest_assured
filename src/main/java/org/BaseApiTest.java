@@ -1,6 +1,8 @@
 package org;
 
 import lombok.SneakyThrows;
+import org.config.ApiSettings;
+import org.config.DummyApp;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 
