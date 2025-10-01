@@ -14,12 +14,12 @@ import lombok.experimental.Accessors;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Accessors(chain = true)
 public class UserSchema {
-    private Long id;
-    private String username;
-    private String firstName;
-    private String lastName;
-    private String email;
-    private String password;
-    private String phone;
-    private Integer userStatus;
+  private Long id;
+  private String username;
+  private String firstName;
+  private String lastName;
+  private String email;
+  private String password;
+  private String phone;
+  private Integer userStatus;
 }

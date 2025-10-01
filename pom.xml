@@ -13,38 +13,39 @@
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-        <testng.version>7.11.0</testng.version>
-        <spring.version>7.0.0-M8</spring.version>
-        <spring.boot.version>4.0.0-M2</spring.boot.version>
+        <junit.version>5.13.4</junit.version>
+        <guice.version>7.0.0</guice.version>
         <assertj.version>3.27.3</assertj.version>
         <lombok.version>1.18.38</lombok.version>
         <rest-assured.version>5.5.6</rest-assured.version>
         <jackson.version>2.19.2</jackson.version>
         <javafaker.version>1.0.2</javafaker.version>
+        <surefire.testng.version>3.0.0-M9</surefire.testng.version>
 
         <maven.version>3.14.0</maven.version>
         <surefire.version>3.5.3</surefire.version>
         <spotbugs.version>4.9.3.2</spotbugs.version>
+        <spotbugs-annotations.version>4.9.4</spotbugs-annotations.version>
         <checkstyle.version>3.6.0</checkstyle.version>
     </properties>
 
     <dependencies>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>${testng.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-api</artifactId>
+            <version>${junit.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring.version}</version>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-params</artifactId>
+            <version>${junit.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
         </dependency>
 
         <dependency>
@@ -88,6 +89,13 @@
             <artifactId>javafaker</artifactId>
             <version>${javafaker.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.github.spotbugs</groupId>
+            <artifactId>spotbugs-annotations</artifactId>
+            <version>${spotbugs-annotations.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -105,39 +113,12 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <base.url>https://otus.ru</base.url>
-                        <waiter.timeout>5</waiter.timeout>
-                    </systemPropertyVariables>
-                </configuration>
             </plugin>
             <plugin>
                 <groupId>com.github.spotbugs</groupId>
                 <artifactId>spotbugs-maven-plugin</artifactId>
                 <version>${spotbugs.version}</version>
             </plugin>
-            <!--            <plugin>-->
-            <!--                <groupId>com.github.spotbugs</groupId>-->
-            <!--                <artifactId>spotbugs-annotations</artifactId>-->
-            <!--                <version>${spotbugs.version}</version>-->
-            <!--                <configuration>-->
-            <!--                    <effort>Max</effort>-->
-            <!--                    <threshold>Low</threshold>-->
-            <!--                    <xmlOutput>true</xmlOutput>-->
-            <!--                    <includeTests>true</includeTests>-->
-            <!--                    <omitVisitors>UnreadFields</omitVisitors>-->
-            <!--                </configuration>-->
-            <!--                <executions>-->
-            <!--                    <execution>-->
-            <!--                        <id>analyze-compile</id>-->
-            <!--                        <phase>compile</phase>-->
-            <!--                        <goals>-->
-            <!--                            <goal>check</goal>-->
-            <!--                        </goals>-->
-            <!--                    </execution>-->
-            <!--                </executions>-->
-            <!--            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>

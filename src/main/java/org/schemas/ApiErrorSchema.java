@@ -12,6 +12,6 @@ import lombok.*;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @EqualsAndHashCode
 public class ApiErrorSchema {
-    private String type;
-    private String message;
+  private String type;
+  private String message;
 }
