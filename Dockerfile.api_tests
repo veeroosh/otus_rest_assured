@@ -1,0 +1,19 @@
+FROM maven:3.9.4-eclipse-temurin-21
+
+RUN apt-get update -y && apt-get install -y unzip curl
+
+ENV ALLURE_VERSION=2.34.1
+
+WORKDIR /tests
+COPY . /tests
+
+RUN mvn clean install -DskipTests
+
+RUN curl -L -o /tmp/allure.zip https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.zip \
+    && unzip /tmp/allure.zip -d /opt/ \
+    && rm /tmp/allure.zip \
+    && ln -s /opt/allure-${ALLURE_VERSION}/bin/allure /usr/bin/allure
+
+RUN mkdir -p /tests/allure-results /tests/allure-report
+
+CMD mvn clean test -Dallure.results.directory=/tests/allure-results
