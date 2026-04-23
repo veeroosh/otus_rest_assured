@@ -1,0 +1,2 @@
+[latysheva_server]
+localhost ansible_connection=local ansible_python_interpreter=/venv/bin/python

@@ -1,0 +1,21 @@
+---
+- name: Build and push docker image
+  community.docker.docker_image:
+    name: "api_tests"
+    tag: "latest"
+    repository: "localhost:5005/api_tests"
+    source: build
+    build:
+      path: "/root/jenkins/workspace/api_tests/"
+      dockerfile: Dockerfile.api_tests
+    push: yes
+
+- name: Running API tests
+  community.docker.docker_container:
+    name: api_tests
+    detach: false
+    auto_remove: false
+    pull: true
+    image: "localhost:5005/api_tests:latest"
+    network_mode: host
+  register: container_result
